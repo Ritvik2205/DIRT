@@ -22,5 +22,7 @@ export default function Question() {
         return [];  // Return an empty array or handle the error as needed
         }
     }
+
+    fetchQuestions()
 }
     
