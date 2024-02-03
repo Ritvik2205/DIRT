@@ -1,12 +1,15 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
+import Image from "./Image";
 
 const urlImg = "https://via.placeholder.com/500"; // This should be changed to the generated background image
 const outputQuestion =
   "This is a placeholder question, what happens oo long to fit?";
 
-function ImageURL() {
+function ImageURL(prompt) {
+  let url = Image(prompt);
+  console.log(url);
   return urlImg;
 }
 
@@ -35,7 +38,8 @@ function App() {
         <div
           id="imageDisplay"
           style={{
-            backgroundImage: "url(" + ImageURL() + ")",
+            backgroundImage:
+              "url(" + ImageURL("An image of a water fountain") + ")",
             backgroundSize: "cover",
           }}
         ></div>
