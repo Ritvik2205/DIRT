@@ -1,4 +1,36 @@
 import random
+import requests
+
+import requests
+
+def get_chatgpt_response(prompt):
+    api_url = "https://api.openai.com/v1/chat/completions"  # Update with the correct API endpoint
+
+    # Set up your OpenAI API key
+    api_key = "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"  # Replace with your actual API key
+
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {api_key}",
+    }
+
+    data = {
+        "model": "gpt-3.5-turbo",
+        "messages": [{"role": "system", "content": "You are a helpful assistant."},
+                     {"role": "user", "content": prompt}]
+    }
+
+    response = requests.post(api_url, json=data, headers=headers)
+
+    if response.status_code == 200:
+        return response.json()["choices"][0]["message"]["content"]
+    else:
+        print(f"Error: {response.status_code}")
+        print(response.text)
+        return None
+
+# Example usage
+
 
 ethnicities = [
     "Spanish", "German", "French", "Italian"
@@ -42,4 +74,15 @@ def image_prompt_generator(setting_idx, ethnicity_idx):
 #If it is:
 
 #f"Imagine you're a game trying to teach an english speaker basic phrases of a new language, {language}. Given the question {question}, the player answered {answer}. Give advice to someone who is clearly new to {language} on how you would phrase their answer in {language}, imagining that you're the {language} speaking {occupation} who asked the initial question. Answer in English, and exclude any unnecessary text"
+
+#  Tutorial: Choose language. Could have an input box saying "What language would you like to learn tdoay?"
+
+
+image, question = image_prompt_generator(0, 0)
+
+
+response = get_chatgpt_response(question)
+
+if response:
+    print(response)
 
