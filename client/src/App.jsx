@@ -2,7 +2,9 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
 
-const imageSizeFactor = 0.5;
+const urlImg = "https://via.placeholder.com/500"; // This should be changed to the generated background image
+const outputQuestion =
+  "This is a placeholder question, what happens oo long to fit?";
 
 // State to hold the user's selected language
 const [selectedLanguage, setSelectedLanguage] = useState('');
@@ -10,9 +12,6 @@ const [selectedLanguage, setSelectedLanguage] = useState('');
 function ImageURL() {
   return urlImg;
 }
-const urlImg = "https://via.placeholder.com/500"; // This should be changed to the generated background image
-const outputQuestion =
-  "This is a placeholder question, what happens oo long to fit?";
 
 function Question() {
   return (
