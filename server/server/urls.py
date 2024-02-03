@@ -21,4 +21,5 @@ from server import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('image/', views.generate_image),
+    path('generate_question/', views.generate_question),
 ]

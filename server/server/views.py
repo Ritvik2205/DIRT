@@ -5,7 +5,8 @@ from django.http import JsonResponse
 from django.http import HttpResponse
 from django.core.serializers import serialize
 # from .source.openai_api import generate_image 
-from .prompts import get_image_response
+from .prompts import image_generator
+from .prompts import question_generator
 from openai import OpenAI
 
 # client = OpenAI()
@@ -34,8 +35,17 @@ def generate_image(request):
         # image_url = "potato"
         # image_url = generate_image("A pixelart image of a grocery store with a French shopper")
         prompt = request.data['prompt']
-        image_url = get_image_response(prompt)
+        image_url = image_generator(prompt)
         print(image_url)
         data = {"url": image_url}
         return JsonResponse(data)
 
+
+@api_view(['POST'])
+def generate_question(request):
+
+    if request.method == 'POST':
+        ethnicity_idx = request.data['ethnicity_idx']
+        question = question_generator(ethnicity_idx)
+        data = {"question": question}
+        return JsonResponse(data)
