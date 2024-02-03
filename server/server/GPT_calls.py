@@ -4,7 +4,6 @@ import string
 def get_chatgpt_response(prompt, gpt_character):
     api_url = "https://api.openai.com/v1/chat/completions"
 
-    api_key = "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"
 
     headers = {
         "Content-Type": "application/json",
