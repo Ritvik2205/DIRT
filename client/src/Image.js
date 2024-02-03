@@ -7,7 +7,7 @@ export default function Image(requestData) {
           "Content-Type": "application/json",
         },
         body: {
-          prompt: requestData,
+          "prompt": JSON.stringify(requestData),
         },
       });
 

@@ -33,6 +33,7 @@ def generate_image(request):
 
         # image_url = "potato"
         # image_url = generate_image("A pixelart image of a grocery store with a French shopper")
+        print(request)
         prompt = request.data['prompt']
         image_url = get_image_response(prompt)
         print(image_url)
