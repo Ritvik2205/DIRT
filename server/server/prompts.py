@@ -5,7 +5,7 @@ def get_chatgpt_response(prompt):
     api_url = "https://api.openai.com/v1/chat/completions"  # Update with the correct API endpoint
 
     # Set up your OpenAI API key
-    api_key = "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"  # Replace with your actual API key
+    api_key = "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"  # Replace with your actual API key
 
     headers = {
         "Content-Type": "application/json",
