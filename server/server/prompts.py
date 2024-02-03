@@ -92,12 +92,6 @@ def image_generator(setting_idx, ethnicity_idx):
     prompt = "Generate a pixelart image of a " + settings[setting_idx] + " with a " + ethnicities[ethnicity_idx] + " " + occupations[setting_idx][character_idx]
     return get_image_response(prompt)
 
-def question_generator(ethnicity_idx):
-    setting_idx = random.randint(0, len(settings) - 1)
-    character_idx = random.randint(0, len(occupations[setting_idx]) - 1)
-    prompt = 'This is very important, pay attention to every sentence. Imagine youre a game trying to teach an english speaker basic phrases of a new language. Generate a python list of 3 basic questions with " surrounding the strings that a " + ethnicities[ethnicity_idx] + " " + occupations[setting_idx][character_idx] + " would likely ask in that order at a " + settings[setting_idx] + ". Have no extra text at the start or bottom not related to the questions, and their english translations in brackets in the same string as the question.'
-    return extract_inner_strings(get_chatgpt_response(prompt))
-
 
 import re
 
@@ -106,10 +100,9 @@ def extract_inner_strings(input_string):
     inner_strings = re.findall(pattern, input_string)
     return inner_strings
 
-occupations = occupation_generator("Supermarket")
-for occupation in occupations:
-    print(occupation)
-    
-    
-    
-    
+
+def question_generator(ethnicity_idx):
+    setting_idx = random.randint(0, len(settings) - 1)
+    character_idx = random.randint(0, len(occupations[setting_idx]) - 1)
+    prompt = 'This is very important, pay attention to every sentence. Imagine youre a game trying to teach an english speaker basic phrases of a new language. Generate a python list of 3 basic questions with " surrounding the strings that a ' + ethnicities[ethnicity_idx] + ' ' + occupations[setting_idx][character_idx] + ' would likely ask in that order at a ' + settings[setting_idx] + '. Have no extra text at the start or bottom not related to the questions, and their english translations in brackets in the same string as the question.'
+    return extract_inner_strings(get_chatgpt_response(prompt))
