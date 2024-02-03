@@ -24,14 +24,12 @@ function SendAnswer() {
 }
 
 function App() {
-
+  // Change the background colout of the page
+  document.body.style.backgroundColor = "white";
   // State to hold the user's selected language
-  const [selectedLanguage, setSelectedLanguage] = useState('');
+  const [selectedLanguage, setSelectedLanguage] = useState("");
 
-
-  
   return (
-
     <div class="float-container">
       <div class="float-child">
         <div
