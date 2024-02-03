@@ -1,8 +1,6 @@
 import random
 import requests
 
-import requests
-
 def get_chatgpt_response(prompt):
     api_url = "https://api.openai.com/v1/chat/completions"  # Update with the correct API endpoint
 
@@ -16,7 +14,7 @@ def get_chatgpt_response(prompt):
 
     data = {
         "model": "gpt-3.5-turbo",
-        "messages": [{"role": "system", "content": "You are a helpful assistant."},
+        "messages": [{"role": "system", "content": "Imagine you're a game trying to teach an english speaker basic phrases of a new language."},
                      {"role": "user", "content": prompt}]
     }
 
@@ -28,9 +26,6 @@ def get_chatgpt_response(prompt):
         print(f"Error: {response.status_code}")
         print(response.text)
         return None
-
-# Example usage
-
 
 ethnicities = [
     "Spanish", "German", "French", "Italian"
@@ -62,7 +57,7 @@ occupations = [
 
 def image_prompt_generator(setting_idx, ethnicity_idx):
     character_idx = random.randint(0, len(occupations[setting_idx]) - 1)
-    return ["Generate a pixelart image of a " + settings[setting_idx] + " with a " + ethnicities[ethnicity_idx] + " " + occupations[setting_idx][character_idx], "This is very important, pay attention to every sentence. Imagine you're a game trying to teach an english speaker basic phrases of a new language. Generate a python list of 3 basic questions that a " + ethnicities[ethnicity_idx] + " " + occupations[setting_idx][character_idx] + " would likely ask in that order at a " + settings[setting_idx] + ". Have no extra text at the start or bottom not related to the questions, and their english translations in brackets in the same string as the question."]
+    return ["Generate a pixelart image of a " + settings[setting_idx] + " with a " + ethnicities[ethnicity_idx] + " " + occupations[setting_idx][character_idx], "This is very important, pay attention to every sentence. Generate a python list of 3 basic questions that a " + ethnicities[ethnicity_idx] + " " + occupations[setting_idx][character_idx] + " would likely ask in that order at a " + settings[setting_idx] + ".  Only return the python list and no added text, and their english translations in brackets in the same string as the question."]
 
 
 # Ask GPT if the answer is in English or not. Could ask like f"Is this phrase {answer} in English or another language? Only answer yes or no, that's it". If it isn't:
@@ -76,13 +71,3 @@ def image_prompt_generator(setting_idx, ethnicity_idx):
 #f"Imagine you're a game trying to teach an english speaker basic phrases of a new language, {language}. Given the question {question}, the player answered {answer}. Give advice to someone who is clearly new to {language} on how you would phrase their answer in {language}, imagining that you're the {language} speaking {occupation} who asked the initial question. Answer in English, and exclude any unnecessary text"
 
 #  Tutorial: Choose language. Could have an input box saying "What language would you like to learn tdoay?"
-
-
-image, question = image_prompt_generator(0, 0)
-
-
-response = get_chatgpt_response(question)
-
-if response:
-    print(response)
-
