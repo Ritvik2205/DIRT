@@ -4,6 +4,9 @@ import "./App.css";
 
 const imageSizeFactor = 0.5;
 
+// State to hold the user's selected language
+const [selectedLanguage, setSelectedLanguage] = useState('');
+
 function ImageURL() {
   return urlImg;
 }
@@ -26,6 +29,7 @@ function SendAnswer() {
 
 function App() {
   return (
+
     <div class="float-container">
       <div class="float-child">
         <div

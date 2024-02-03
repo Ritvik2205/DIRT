@@ -36,14 +36,13 @@ def get_image_response(prompt):
     api_url = "https://api.openai.com/v1/images/generations"
 
     data = {
-        "model": "dall-e-3",
         "prompt": prompt
     }
 
     response = requests.post(api_url, json=data, headers=HEADERS)
 
     if response.status_code == 200:
-        return response.json()["choices"][0]["message"]["content"]
+        return response.json()["data"][0]["url"]
     else:
         print(f"Error: {response.status_code}")
         print(response.text)
@@ -102,7 +101,7 @@ def image_prompt_generator(setting_idx, ethnicity_idx):
 image, question = image_prompt_generator(0, 0)
 
 
-response = get_chatgpt_response(question)
+# response = get_chatgpt_response(question)
 
-if response:
-    print(response)
+# if response:
+#     print(response)
