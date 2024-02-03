@@ -1,16 +1,16 @@
 import random
 import requests
 
+# Set up your OpenAI API key
+API_KEY = "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"  # Replace with your actual API key
+
+HEADERS = {
+    "Content-Type": "application/json",
+    "Authorization": f"Bearer {API_KEY}",
+    }
+
 def get_chatgpt_response(prompt):
     api_url = "https://api.openai.com/v1/chat/completions"  # Update with the correct API endpoint
-
-    # Set up your OpenAI API key
-    api_key = "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"  # Replace with your actual API key
-
-    headers = {
-        "Content-Type": "application/json",
-        "Authorization": f"Bearer {api_key}",
-    }
 
     data = {
         "model": "gpt-3.5-turbo",
@@ -18,7 +18,25 @@ def get_chatgpt_response(prompt):
                      {"role": "user", "content": prompt}]
     }
 
-    response = requests.post(api_url, json=data, headers=headers)
+    response = requests.post(api_url, json=data, headers=HEADERS)
+
+    if response.status_code == 200:
+        return response.json()["choices"][0]["message"]["content"]
+    else:
+        print(f"Error: {response.status_code}")
+        print(response.text)
+        return None
+    
+
+def get_image_response(prompt):
+    api_url = "https://api.openai.com/v1/images/generations"  # Update with the correct API endpoint
+
+    data = {
+        "model": "dall-e-3",
+        "prompt": prompt
+    }
+
+    response = requests.post(api_url, json=data, headers=HEADERS)
 
     if response.status_code == 200:
         return response.json()["choices"][0]["message"]["content"]
