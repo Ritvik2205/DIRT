@@ -45,7 +45,8 @@ def generate_image(request):
 def generate_question(request):
 
     if request.method == 'POST':
-        ethnicity_idx = request.data['ethnicity_idx']
+        # ethnicity_idx = request.data['ethnicity_idx']
+        ethnicity_idx = 0
         question = question_generator(ethnicity_idx)
         data = {"question": question}
         return JsonResponse(data)
