@@ -19,14 +19,14 @@ export default function Image() {
   
       const data = await response.json();
       console.log('URL from backend:', data.url); // 'data.url' should be replaced with the actual key used in the JSON response
+      return data.url;
     } 
     catch (error) {
       console.error('Error fetching URL from backend:', error);
+      return null;
     }
 
-  return (
-    <div>{data.url}</div>
-  )}
+  }
 
   fetchURL()
 }
