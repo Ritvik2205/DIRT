@@ -27,4 +27,6 @@ export default function Image() {
   return (
     <div>{data.url}</div>
   )}
+
+  fetchURL()
 }
