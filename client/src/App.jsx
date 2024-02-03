@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
 import Image from "./Image";
 
 const urlImg = "https://via.placeholder.com/500"; // This should be changed to the generated background image
 const outputQuestion =
-  "This is a placeholder question, what happens oo long to fit?";
+  "¿Cómo te llamas? (What is your name?)";
 
 function ImageURL(prompt, cb) {
   Image(prompt, cb);
@@ -33,14 +33,19 @@ function App() {
   const [selectedLanguage, setSelectedLanguage] = useState("");
   const [urlResponse, setUrlResponse] = useState("");
 
+  useEffect(() => {
+    ImageURL("An image of a water fountain", maybeSetUrl)
+  }, [])
+
 
   function maybeSetUrl(newUrl){
     newUrl && setUrlResponse(newUrl)
   }
 
+  
+
   return (
     <>
-    {ImageURL("An image of a water fountain", maybeSetUrl)}
     <div class="float-container">
       <div class="float-child">
         <div

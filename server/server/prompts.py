@@ -3,7 +3,7 @@ import requests
 
 # Set up your OpenAI API key
 # Replace with your actual API key
-API_KEY = "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"
+API_KEY = "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"
 
 HEADERS = {
     "Content-Type": "application/json",
