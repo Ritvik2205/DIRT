@@ -1,12 +1,9 @@
-async function fetchStringList(requestData) {
+async function fetchQuestions() {
     try {
       const response = await fetch('http://127.0.0.1:8000/generate_question/', {  // Adjust the endpoint if necessary
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-        },
-        body: {
-            prompt: requestData,
         },
         // You can include body data if your Django view expects it
       });
