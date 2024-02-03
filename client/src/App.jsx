@@ -10,7 +10,7 @@ const outputQuestion =
 function ImageURL(prompt) {
   let url = Image(prompt);
   console.log(url);
-  return urlImg;
+  return url;
 }
 
 function Question() {
