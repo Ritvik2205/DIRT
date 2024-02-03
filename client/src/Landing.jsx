@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import "./App.css";
 
-function LanguageLearningPage() {
+function LanguageLearningPage({ selectedLanguage, setSelectedLanguage }) {
 
   // Function to handle language selection
   const handleLanguageSelect = (language) => {
