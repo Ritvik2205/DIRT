@@ -41,7 +41,7 @@ function App() {
           <br />
           <Question />
           <h3> Your anwer: </h3>
-          <input id="userInput" type="text"></input>
+          <input id="userInput" type="textArea"></input>
           <button
             onClick={() => {
               SendAnswer();
