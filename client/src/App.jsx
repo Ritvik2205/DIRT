@@ -6,9 +6,6 @@ const urlImg = "https://via.placeholder.com/500"; // This should be changed to t
 const outputQuestion =
   "This is a placeholder question, what happens oo long to fit?";
 
-// State to hold the user's selected language
-const [selectedLanguage, setSelectedLanguage] = useState('');
-
 function ImageURL() {
   return urlImg;
 }
@@ -27,6 +24,12 @@ function SendAnswer() {
 }
 
 function App() {
+
+  // State to hold the user's selected language
+  const [selectedLanguage, setSelectedLanguage] = useState('');
+
+
+  
   return (
 
     <div class="float-container">
