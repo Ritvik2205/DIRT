@@ -1,35 +1,58 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 
-function Image() {
+const imageSizeFactor = 0.5;
+
+function ImageURL() {
+  return urlImg;
+}
+const urlImg = "https://via.placeholder.com/500"; // This should be changed to the generated background image
+const outputQuestion =
+  "This is a placeholder question, what happens oo long to fit?";
+
+function Question() {
   return (
-    <a href="https://vitejs.dev" target="_blank">
-      <img src={viteLogo} className="logo" alt="Vite logo" />
-    </a>
+    <div>
+      <p class="textBox"> {outputQuestion}</p>
+    </div>
   );
+}
+
+function SendAnswer() {
+  const userInput = document.getElementById("userInput").value;
+  alert(`You entered: ${userInput}`);
 }
 
 function App() {
   return (
-    <>
-      <Image />
-      <div>
-        <h1>Below is some text input:</h1>
-        <input id="userInput" type="text"></input>
-      </div>
-      <div>
-        <button
-          onClick={() => {
-            const userInput = document.getElementById("userInput").value;
-            alert(`You entered: ${userInput}`);
+    <div class="float-container">
+      <div class="float-child">
+        <div
+          id="imageDisplay"
+          style={{
+            backgroundImage: "url(" + ImageURL() + ")",
+            backgroundSize: "cover",
           }}
-        >
-          Submit answer
-        </button>
+        ></div>
       </div>
-    </>
+      <div class="float-child">
+        <div id="answerPanel">
+          <br />
+          <Question />
+          <h3> Your anwer: </h3>
+          <input id="userInput" type="text"></input>
+          <button
+            onClick={() => {
+              SendAnswer();
+            }}
+          >
+            Submit answer
+          </button>
+        </div>
+        <div />
+      </div>{" "}
+    </div>
   );
 }
 
