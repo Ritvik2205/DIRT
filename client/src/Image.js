@@ -1,4 +1,4 @@
-export default function Image(requestData) {
+export default function Image(requestData, cb) {
   async function fetchURL(requestData) {
     fetch("http://127.0.0.1:8000/image/", {
         method: "POST",
@@ -8,8 +8,8 @@ export default function Image(requestData) {
     })
     .then(response => response.json())
     .then(data => {
-      console.log("URL from backend:", data); // 'data.url' should be replaced with the actual key used in the JSON response
-      return data["url"];
+      console.log("URL from backend:", data["url"]); // 'data.url' should be replaced with the actual key used in the JSON response
+      cb(data["url"]);
     })
     .catch (error => {
       console.error("Error fetching URL from backend:", error);
