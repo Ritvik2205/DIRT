@@ -1,16 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
 import Image from "./Image";
 
 const urlImg = "https://via.placeholder.com/500"; // This should be changed to the generated background image
 const outputQuestion =
-  "This is a placeholder question, what happens oo long to fit?";
+  "¿Cómo te llamas? (What is your name?)";
 
-function ImageURL(prompt) {
-  let url = Image(prompt);
-  console.log(url);
-  return url;
+function ImageURL(prompt, cb) {
+  Image(prompt, cb);
+  // console.log(url);
+  // return url;
 }
 
 function Question() {
@@ -31,15 +31,28 @@ function App() {
   document.body.style.backgroundColor = "white";
   // State to hold the user's selected language
   const [selectedLanguage, setSelectedLanguage] = useState("");
+  const [urlResponse, setUrlResponse] = useState("");
+
+  useEffect(() => {
+    ImageURL("An image of a water fountain", maybeSetUrl)
+  }, [])
+
+
+  function maybeSetUrl(newUrl){
+    newUrl && setUrlResponse(newUrl)
+  }
+
+  
 
   return (
+    <>
     <div class="float-container">
       <div class="float-child">
         <div
           id="imageDisplay"
           style={{
             backgroundImage:
-              "url(" + ImageURL("An image of a water fountain") + ")",
+              "url(" + urlResponse + ")",
             backgroundSize: "cover",
           }}
         ></div>
@@ -61,6 +74,7 @@ function App() {
         <div />
       </div>{" "}
     </div>
+    </>
   );
 }
 
